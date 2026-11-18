@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NARECAFÉ | Asociación Naranjeña Regenerativa de Café</title>
+  <meta name="description" content="Asociación de productoras y productores de café de Naranjo, Alajuela, Costa Rica. Caficultura regenerativa, suelo vivo, bioinsumos hechos en finca y café bajo sombra." />
+
+  <!-- Tipografías oficiales según Guía de Marca Visual: Roboto Slab & Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Configuración de Tailwind con los tokens exactos de la Guía de Marca Visual -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            nare: {
+              blue: '#1281aa',      /* Pantone 7703 C - Azul principal */
+              green: '#249a89',     /* Pantone 339 C - Verde esmeralda/bosque */
+              brown: '#845339',     /* Pantone 154 C - Café tierra */
+              yellow: '#fbb040',    /* Pantone 7549 C - Amarillo/Mostaza acento */
+              dark: '#1b1d21',      /* Pantone Black 6 C - Negro profundo */
+              slate: '#727d84',     /* Pantone 430 C - Gris pizarra */
+              offwhite: '#f8faf9'   /* Blanco natural suave */
+            }
+          },
+          fontFamily: {
+            slab: ['"Roboto Slab"', 'serif'],
+            sans: ['"Roboto"', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Variables CSS oficiales de la Guía de Marca Visual NARECAFÉ */
+    :root {
+      --color-blue: #1281aa;
+      --color-green: #249a89;
+      --color-brown: #845339;
+      --color-yellow: #fbb040;
+      --color-dark: #1b1d21;
+      --color-slate: #727d84;
+      --color-white: #ffffff;
+      --color-offwhite: #f8faf9;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: var(--color-dark);
+      background-color: var(--color-white);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Roboto Slab', serif;
+    }
+
+    /* Motivos gráficos sutiles inspirados en la página 16 de la Guía de Marca */
+    .bg-motif-beans {
+      background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231281aa' fill-opacity='0.045'%3E%3Cpath d='M35 20c14-6 30 1 36 14-14 8-28 5-41 12-5-11-3-21 5-26zm39 19c5 12 2 24-8 29-14 6-30-1-36-14 14-8 29-5 44-15z'/%3E%3Cpath d='M85 75c14-6 30 1 36 14-14 8-28 5-41 12-5-11-3-21 5-26z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .bg-motif-leaves {
+      background-image: url("data:image/svg+xml,%3Csvg width='140' height='140' viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23249a89' fill-opacity='0.05'%3E%3Cpath d='M25 70c12-12 28-12 40 0-12 12-28 12-40 0zm50-25c12-12 28-12 40 0-12 12-28 12-40 0zm0 50c12-12 28-12 40 0-12 12-28 12-40 0z'/%3E%3Ccircle cx='70' cy='70' r='3'/%3E%3Ccircle cx='105' cy='70' r='3'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    /* Animaciones suaves */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+    .animate-float-slow {
+      animation: floatSlow 5.5s ease-in-out infinite;
+    }
+
+    /* Estilo de navegación activa */
+    .nav-link {
+      position: relative;
+      transition: color 0.25s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2.5px;
+      background-color: var(--color-green);
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+    .nav-link.active {
+      color: var(--color-blue);
+      font-weight: 700;
+    }
+
+    /* Transiciones de pestañas */
+    .tab-panel {
+      animation: fadeInScale 0.35s ease forwards;
+    }
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-nare-green selection:text-white">
+
+  <!-- ===================================================================== -->
+  <!-- PLANTILLA OCULTA DEL IMAGOTIPO SVG OFICIAL DE NARECAFÉ (REUTILIZABLE) -->
+  <!-- ===================================================================== -->
+  <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
+    <symbol id="narecafe-isotipo" viewBox="0 0 220 190">
+      <defs>
+        <path id="grain-top-shape" d="M22,102 C14,55 58,14 115,14 C158,14 192,32 198,48 C202,58 188,70 165,82 C136,96 104,96 76,102 C48,108 32,120 25,114 C21,111 23,106 22,102 Z" />
+        <path id="grain-bottom-shape" d="M34,132 C50,115 76,106 108,103 C140,100 172,88 192,69 C202,60 212,66 211,81 C209,134 166,176 108,176 C68,176 38,158 31,144 C28,139 30,136 34,132 Z" />
+      </defs>
+      <use href="#grain-top-shape" fill="var(--logo-top, #1281aa)" />
+      <use href="#grain-bottom-shape" fill="var(--logo-bottom, #249a89)" />
+      <g fill="var(--logo-cutout, #ffffff)">
+        <path d="M44,162 Q67,145 84,121" stroke="var(--logo-cutout, #ffffff)" stroke-width="2.6" stroke-linecap="round" fill="none" />
+        <path d="M58,150 C48,146 43,136 47,128 C55,131 61,140 58,150 Z" />
+        <path d="M68,141 C58,136 55,125 60,118 C68,122 72,131 68,141 Z" />
+        <path d="M78,130 C70,124 69,113 75,108 C81,113 83,122 78,130 Z" />
+        <path d="M62,152 C71,156 81,153 84,146 C76,143 67,146 62,152 Z" />
+        <path d="M73,142 C82,145 92,141 94,134 C86,132 78,135 73,142 Z" />
+        <circle cx="53" cy="158" r="2.7" />
+        <circle cx="65" cy="147" r="2.7" />
+      </g>
+      <g fill="var(--logo-cutout, #ffffff)">
+        <path d="M196,115 Q166,132 132,126" stroke="var(--logo-cutout, #ffffff)" stroke-width="2.6" stroke-linecap="round" fill="none" />
+        <path d="M174,124 C177,114 186,108 193,111 C190,119 182,125 174,124 Z" />
+        <path d="M159,126 C161,115 169,108 176,110 C174,119 167,125 159,126 Z" />
+        <path d="M144,126 C145,116 151,108 158,110 C157,118 151,125 144,126 Z" />
+        <path d="M132,126 C126,120 126,111 132,107 C137,112 137,120 132,126 Z" />
+        <path d="M167,128 C164,138 169,147 176,149 C178,141 174,132 167,128 Z" />
+        <path d="M151,128 C147,137 151,146 158,148 C160,140 157,132 151,128 Z" />
+        <circle cx="179" cy="131" r="2.7" />
+        <circle cx="163" cy="132" r="2.7" />
+      </g>
+      <g>
+        <path d="M72,38 C89,44 103,50 113,56 C116,44 126,35 139,36 C152,37 167,31 182,34 C167,37 155,42 148,47 C151,57 148,71 139,81 C130,91 123,98 122,110 C121,118 125,127 131,134 C118,128 110,116 109,103 C108,95 109,88 111,83 C103,87 93,88 85,84 C88,80 90,77 88,75 C83,76 77,75 73,71 C77,68 80,65 78,62 C72,62 67,59 65,54 C70,52 73,49 71,45 C68,42 68,39 72,38 Z" fill="var(--logo-cutout, #ffffff)" />
+        <circle cx="137" cy="44" r="2.6" fill="var(--logo-top, #1281aa)" />
+      </g>
+    </symbol>
+  </svg>
+
+  <!-- ===================================================================== -->
+  <!-- BARRA DE NAVEGACIÓN FIJA (STICKY)                                     -->
+  <!-- ===================================================================== -->
+  <header id="navbar" class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-shadow duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Imagotipo Horizontal Oficial NARECAFÉ -->
+        <a href="#inicio" class="flex items-center gap-3 group focus:outline-none" aria-label="Inicio NARECAFÉ">
+          <svg class="w-12 h-11 shrink-0 transition-transform duration-300 group-hover:scale-105" style="--logo-top:#1281aa; --logo-bottom:#249a89; --logo-cutout:#ffffff;">
+            <use href="#narecafe-isotipo" />
+          </svg>
+          <div class="flex flex-col leading-none">
+            <div class="font-slab font-bold text-2xl sm:text-[26px] tracking-tight flex items-baseline">
+              <span class="text-nare-blue">Nare</span><span class="text-nare-brown">caf</span><span class="relative inline-block text-nare-brown">e<svg class="w-3.5 h-3.5 text-nare-green absolute -top-2 right-0" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2 14C2 7 7 2 14 2c0 7-5 12-12 12z"/></svg></span>
+            </div>
+            <span class="text-[10px] sm:text-[11px] font-medium text-nare-dark/80 tracking-normal mt-0.5">
+              Asociación Naranjeña Regenerativa de Café
+            </span>
+          </div>
+        </a>
+
+        <!-- Navegación Desktop -->
+        <nav class="hidden lg:flex items-center gap-8 text-[15px] font-medium text-nare-dark" aria-label="Navegación principal">
+          <a href="#inicio" class="nav-link active py-1">Inicio</a>
+          <a href="#sobre-nosotros" class="nav-link py-1">Sobre nosotros</a>
+          <a href="#servicios" class="nav-link py-1">Servicios</a>
+          <a href="#galeria" class="nav-link py-1">Galería</a>
+          <a href="#contacto" class="nav-link py-1">Contacto</a>
+        </nav>
+
+        <!-- Botón de Acción Desktop -->
+        <div class="hidden lg:flex items-center gap-3">
+          <a href="#contacto" class="inline-flex items-center gap-2 bg-nare-green hover:bg-[#1e8273] text-white font-medium text-sm px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all duration-200">
+            <span>Únete / Contáctanos</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Botón Menú Hamburguesa Móvil -->
+        <button id="mobile-menu-btn" type="button" class="lg:hidden inline-flex items-center justify-center p-2.5 rounded-xl text-nare-dark hover:text-nare-blue hover:bg-slate-100 focus:outline-none transition" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú">
+          <svg id="icon-menu-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="icon-menu-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú Móvil Desplegable -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 px-4 pt-3 pb-6 shadow-lg">
+      <div class="flex flex-col space-y-2">
+        <a href="#inicio" class="mobile-nav-link px-3 py-2.5 rounded-lg text-base font-medium text-nare-blue bg-nare-blue/5">Inicio</a>
+        <a href="#sobre-nosotros" class="mobile-nav-link px-3 py-2.5 rounded-lg text-base font-medium text-nare-dark hover:bg-slate-50">Sobre nosotros</a>
+        <a href="#servicios" class="mobile-nav-link px-3 py-2.5 rounded-lg text-base font-medium text-nare-dark hover:bg-slate-50">Servicios</a>
+        <a href="#galeria" class="mobile-nav-link px-3 py-2.5 rounded-lg text-base font-medium text-nare-dark hover:bg-slate-50">Galería</a>
+        <a href="#contacto" class="mobile-nav-link px-3 py-2.5 rounded-lg text-base font-medium text-nare-dark hover:bg-slate-50">Contacto</a>
+        <div class="pt-3">
+          <a href="#contacto" class="mobile-nav-link w-full flex items-center justify-center gap-2 bg-nare-green text-white font-medium py-3 rounded-xl shadow-sm">
+            <span>Únete / Contáctanos</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================================================================== -->
+    <!-- SECCIÓN 1: INICIO (HERO)                                              -->
+    <!-- ===================================================================== -->
+    <section id="inicio" class="relative bg-white bg-motif-beans pt-10 pb-16 lg:pt-16 lg:pb-24 overflow-hidden">
+      <div class="absolute top-0 right-0 -translate-y-12 translate-x-1/4 w-96 h-96 rounded-full bg-nare-blue/5 blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-96 h-96 rounded-full bg-nare-green/5 blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+          
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-nare-offwhite border border-nare-green/25 text-nare-green text-xs sm:text-sm font-medium">
+              <span class="w-2 h-2 rounded-full bg-nare-yellow"></span>
+              <span>Naranjo, Alajuela · Costa Rica</span>
+            </div>
+
+            <h1 class="font-slab font-bold text-3xl sm:text-5xl lg:text-[52px] text-nare-dark leading-[1.15] tracking-tight">
+              Desde Naranjo, <span class="text-nare-blue">una forma distinta</span> de <span class="text-nare-green">cultivar café</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-nare-slate font-light leading-relaxed max-w-2xl">
+              Somos una asociación de productoras y productores comprometidos con una <strong class="font-medium text-nare-dark">caficultura regenerativa</strong>. Aprendemos y aplicamos juntos prácticas de <strong class="font-medium text-nare-dark">suelo vivo</strong>, <strong class="font-medium text-nare-dark">bioinsumos hechos en la finca</strong> y <strong class="font-medium text-nare-dark">café bajo sombra</strong>, compartiendo lo que hacemos finca por finca.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-3.5 pt-2">
+              <a href="#servicios" class="inline-flex items-center justify-center gap-2.5 bg-nare-blue hover:bg-[#0e6b8e] text-white font-medium px-7 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-200">
+                <span>Conoce nuestro modelo</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </a>
+              <a href="#contacto" class="inline-flex items-center justify-center gap-2.5 bg-white hover:bg-nare-offwhite text-nare-brown border-2 border-nare-brown/30 hover:border-nare-brown font-medium px-7 py-3.5 rounded-xl transition-all duration-200">
+                <span>Contactar a la asociación</span>
+              </a>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-6">
+              <div class="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-sm hover:border-nare-blue/40 transition">
+                <div class="w-8 h-8 rounded-lg bg-nare-blue/10 text-nare-blue flex items-center justify-center mb-2.5">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+                <p class="font-slab font-bold text-sm text-nare-dark">Escuela de Campo</p>
+                <p class="text-xs text-nare-slate mt-0.5">Aprender haciendo en finca</p>
+              </div>
+
+              <div class="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-sm hover:border-nare-green/40 transition">
+                <div class="w-8 h-8 rounded-lg bg-nare-green/10 text-nare-green flex items-center justify-center mb-2.5">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <p class="font-slab font-bold text-sm text-nare-dark">Cooperación Europea</p>
+                <p class="text-xs text-nare-slate mt-0.5">Respaldo técnico e identidad</p>
+              </div>
+
+              <div class="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-sm hover:border-nare-brown/40 transition">
+                <div class="w-8 h-8 rounded-lg bg-nare-brown/10 text-nare-brown flex items-center justify-center mb-2.5">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <p class="font-slab font-bold text-sm text-nare-dark">+600 Registros</p>
+                <p class="text-xs text-nare-slate mt-0.5">Archivo visual de procesos</p>
+              </div>
+
+              <div class="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-sm hover:border-nare-yellow/60 transition">
+                <div class="w-8 h-8 rounded-lg bg-nare-yellow/20 text-nare-brown flex items-center justify-center mb-2.5">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <p class="font-slab font-bold text-sm text-nare-dark">Red de Productores</p>
+                <p class="text-xs text-nare-slate mt-0.5">Fincas unidas en Naranjo</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="relative bg-nare-offwhite border border-slate-200/90 rounded-3xl p-6 sm:p-8 shadow-xl">
+              <div class="border-4 border-nare-yellow rounded-2xl bg-white p-6 sm:p-8 text-center relative overflow-hidden">
+                
+                <div class="animate-float-slow mx-auto w-36 h-32 sm:w-44 sm:h-38 mb-4">
+                  <svg class="w-full h-full drop-shadow-sm" style="--logo-top:#1281aa; --logo-bottom:#249a89; --logo-cutout:#ffffff;">
+                    <use href="#narecafe-isotipo" />
+                  </svg>
+                </div>
+
+                <div class="font-slab font-bold text-3xl sm:text-4xl tracking-tight flex items-baseline justify-center">
+                  <span class="text-nare-blue">Nare</span><span class="text-nare-brown">caf</span><span class="relative inline-block text-nare-brown">e<svg class="w-4 h-4 text-nare-green absolute -top-2.5 right-0" viewBox="0 0 16 16" fill="currentColor"><path d="M2 14C2 7 7 2 14 2c0 7-5 12-12 12z"/></svg></span>
+                </div>
+                <p class="text-xs sm:text-sm font-medium text-nare-dark/80 mt-1">
+                  Asociación Naranjeña Regenerativa de Café
+                </p>
+
+                <div class="my-5 h-px bg-gradient-to-r from-transparent via-nare-brown/30 to-transparent"></div>
+
+                <p class="font-slab text-sm sm:text-base text-nare-dark leading-snug">
+                  Productores comprometidos con una <strong class="text-nare-brown">caficultura regenerativa</strong>
+                </p>
+                <p class="text-xs sm:text-sm font-medium text-nare-blue mt-1.5">
+                  Protegiendo el ambiente y fortaleciendo la comunidad
+                </p>
+
+                <div class="mt-6 rounded-xl overflow-hidden bg-gradient-to-b from-[#1281aa]/10 to-[#249a89]/15">
+                  <img src="https://i.postimg.cc/2jc63g13/web-2robles-naranjo-priscillamora209.jpg" alt="Finca y caficultura regenerativa en Naranjo" class="w-full h-44 sm:h-52 object-cover block hover:scale-105 transition-transform duration-500" />
+                </div>
+              </div>
+
+              <div class="mt-4 flex items-center justify-between text-xs text-nare-slate px-1">
+                <span class="inline-flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-nare-green"></span>
+                  Comunidad de práctica territorial
+                </span>
+                <a href="#galeria" class="text-nare-blue font-medium hover:underline">Ver archivo visual →</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECCIÓN 2: SOBRE NOSOTROS                                             -->
+    <!-- ===================================================================== -->
+    <section id="sobre-nosotros" class="py-20 lg:py-28 bg-nare-offwhite border-y border-slate-200/70 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        
+        <div class="max-w-3xl">
+          <span class="inline-block text-xs font-bold uppercase tracking-widest text-nare-green mb-2">Sobre nosotros</span>
+          <h2 class="font-slab font-bold text-3xl sm:text-4xl text-nare-dark leading-tight">
+            Trabajar la tierra con propósito, <span class="text-nare-brown">finca por finca</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mt-10 items-start">
+          
+          <div class="lg:col-span-5 bg-white rounded-3xl p-7 sm:p-9 border border-slate-200/80 shadow-sm relative">
+            <div class="w-11 h-11 rounded-2xl bg-nare-yellow/20 text-nare-brown flex items-center justify-center mb-5">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+              </svg>
+            </div>
+            <blockquote class="space-y-4 text-nare-dark">
+              <p class="font-slab font-semibold text-lg sm:text-xl leading-snug text-nare-blue">
+                “Hay formas de producir café. Y hay formas de trabajar la tierra con propósito.”
+              </p>
+              <p class="text-sm sm:text-base font-light text-nare-slate leading-relaxed">
+                Narecafé nace en Naranjo, desde el trabajo conjunto de productores que decidieron hacer las cosas diferente: cuidar el suelo, recuperar la biodiversidad y fortalecer la vida en sus comunidades.
+              </p>
+              <p class="font-slab font-semibold text-base text-nare-brown pt-1">
+                No es solo lo que se cultiva. Es cómo se cultiva, con quién y para qué.
+              </p>
+            </blockquote>
+          </div>
+
+          <div class="lg:col-span-7 space-y-5 text-nare-slate font-light text-base leading-relaxed">
+            <p class="text-nare-dark font-normal text-lg">
+              Somos un grupo de pequeños y medianos productores y productoras de café de <strong class="font-semibold text-nare-blue">Naranjo, Alajuela</strong>.
+            </p>
+            <p>
+              Nuestra historia comenzó en una <strong class="font-medium text-nare-dark">Escuela de Campo</strong> financiada por cooperación europea, donde durante varias sesiones aprendimos haciendo: recolectamos y preparamos microorganismos de montaña, elaboramos bioinsumos propios y probamos prácticas concretas para regenerar el suelo en nuestras propias fincas.
+            </p>
+            <p>
+              Al concluir el proceso formativo, decidimos no dispersarnos, sino seguir caminando juntos y organizarnos formalmente como asociación. Hoy impulsamos una <strong class="font-medium text-nare-dark">transición gradual hacia una caficultura regenerativa</strong> que protege el suelo, el agua y la biodiversidad de nuestro cantón, sin poner en riesgo la estabilidad económica de cada familia productora.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-4">
+              <div class="bg-white rounded-2xl p-6 border-t-4 border-nare-blue shadow-sm">
+                <div class="flex items-center gap-2.5 mb-3">
+                  <span class="w-8 h-8 rounded-lg bg-nare-blue/10 text-nare-blue flex items-center justify-center">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </span>
+                  <h3 class="font-slab font-bold text-lg text-nare-dark">Misión</h3>
+                </div>
+                <p class="text-sm text-nare-slate leading-relaxed">
+                  Fomentar una caficultura sostenible y regenerativa en el cantón de Naranjo.
+                </p>
+              </div>
+
+              <div class="bg-white rounded-2xl p-6 border-t-4 border-nare-green shadow-sm">
+                <div class="flex items-center gap-2.5 mb-3">
+                  <span class="w-8 h-8 rounded-lg bg-nare-green/10 text-nare-green flex items-center justify-center">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                  </span>
+                  <h3 class="font-slab font-bold text-lg text-nare-dark">Visión</h3>
+                </div>
+                <p class="text-sm text-nare-slate leading-relaxed">
+                  Ser una organización líder en la caficultura sostenible y regenerativa, capaz de transformar el paisaje productivo de Naranjo mediante prácticas que protejan el ambiente, fortalezcan la economía familiar y generen un café de alto valor para las generaciones presentes y futuras.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-16 bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-nare-brown">Nuestro camino</span>
+              <h3 class="font-slab font-bold text-xl sm:text-2xl text-nare-dark mt-0.5">Proceso de transición gradual</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-nare-slate">Selecciona cada etapa para explorar cómo construimos el modelo</p>
+          </div>
+
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-6" role="tablist" aria-label="Etapas de transición">
+            <button type="button" onclick="selectTimeline(0)" id="tl-btn-0" class="tl-btn text-left p-4 rounded-2xl border-2 border-nare-blue bg-nare-blue/5 transition-all">
+              <span class="inline-block text-xs font-bold text-nare-blue mb-1">Etapa 01</span>
+              <p class="font-slab font-bold text-sm sm:text-base text-nare-dark">Escuela de Campo</p>
+            </button>
+            <button type="button" onclick="selectTimeline(1)" id="tl-btn-1" class="tl-btn text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-nare-green/50 bg-white transition-all">
+              <span class="inline-block text-xs font-bold text-nare-green mb-1">Etapa 02</span>
+              <p class="font-slab font-bold text-sm sm:text-base text-nare-dark">Bioinsumos y Suelo Vivo</p>
+            </button>
+            <button type="button" onclick="selectTimeline(2)" id="tl-btn-2" class="tl-btn text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-nare-brown/50 bg-white transition-all">
+              <span class="inline-block text-xs font-bold text-nare-brown mb-1">Etapa 03</span>
+              <p class="font-slab font-bold text-sm sm:text-base text-nare-dark">Organización Asociativa</p>
+            </button>
+            <button type="button" onclick="selectTimeline(3)" id="tl-btn-3" class="tl-btn text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-nare-yellow/70 bg-white transition-all">
+              <span class="inline-block text-xs font-bold text-nare-brown mb-1">Etapa 04</span>
+              <p class="font-slab font-bold text-sm sm:text-base text-nare-dark">Impacto Territorial</p>
+            </button>
+          </div>
+
+          <div id="tl-content" class="mt-6 bg-nare-offwhite rounded-2xl p-6 sm:p-7 border border-slate-200/70"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECCIÓN 3: SERVICIOS Y MODELO REGENERATIVO                            -->
+    <!-- ===================================================================== -->
+    <section id="servicios" class="py-20 lg:py-28 bg-white bg-motif-leaves relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mx-auto text-center">
+          <span class="inline-block text-xs font-bold uppercase tracking-widest text-nare-blue mb-2">Modelo y Servicios</span>
+          <h2 class="font-slab font-bold text-3xl sm:text-4xl text-nare-dark">
+            Cuatro pilares de nuestra caficultura regenerativa
+          </h2>
+          <p class="text-base text-nare-slate font-light mt-3 leading-relaxed">
+            Articulamos conocimiento técnico y saberes locales para productores de Naranjo y alrededores, instituciones del sector cafetalero y aliados comprometidos.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mt-12">
+          
+          <article class="bg-white rounded-3xl p-7 sm:p-8 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-nare-brown/40 transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-12 h-12 rounded-2xl bg-nare-brown/10 text-nare-brown flex items-center justify-center">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                  </svg>
+                </div>
+                <span class="text-xs font-medium px-3 py-1 rounded-full bg-nare-brown/10 text-nare-brown">Pilar 01</span>
+              </div>
+              <h3 class="font-slab font-bold text-xl text-nare-dark mb-2.5">Suelo Vivo y Microbiología</h3>
+              <p class="text-sm sm:text-base text-nare-slate font-light leading-relaxed mb-5">
+                Elaboración y aplicación de microorganismos de montaña (MM), bioles y bioinsumos hechos directamente en la finca para recuperar la fertilidad natural y reducir la dependencia de insumos sintéticos.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs text-nare-slate">Dirigido a: Productores y técnicos</span>
+              <button type="button" onclick="openServiceModal(0)" class="inline-flex items-center gap-1.5 text-sm font-medium text-nare-brown hover:underline">
+                <span>Ver detalle práctico</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-3xl p-7 sm:p-8 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-nare-green/40 transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-12 h-12 rounded-2xl bg-nare-green/10 text-nare-green flex items-center justify-center">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                </div>
+                <span class="text-xs font-medium px-3 py-1 rounded-full bg-nare-green/10 text-nare-green">Pilar 02</span>
+              </div>
+              <h3 class="font-slab font-bold text-xl text-nare-dark mb-2.5">Café Bajo Sombra y Biodiversidad</h3>
+              <p class="text-sm sm:text-base text-nare-slate font-light leading-relaxed mb-5">
+                Diseño y manejo agroforestal con árboles nativos y frutales que regulan el microclima, protegen las nacientes de agua y crean corredores biológicos para aves y polinizadores como el colibrí.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs text-nare-slate">Dirigido a: Fincas y conservación</span>
+              <button type="button" onclick="openServiceModal(1)" class="inline-flex items-center gap-1.5 text-sm font-medium text-nare-green hover:underline">
+                <span>Ver detalle práctico</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-3xl p-7 sm:p-8 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-nare-blue/40 transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-12 h-12 rounded-2xl bg-nare-blue/10 text-nare-blue flex items-center justify-center">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                </div>
+                <span class="text-xs font-medium px-3 py-1 rounded-full bg-nare-blue/10 text-nare-blue">Pilar 03</span>
+              </div>
+              <h3 class="font-slab font-bold text-xl text-nare-dark mb-2.5">Escuela de Campo e Intercambio Finca por Finca</h3>
+              <p class="text-sm sm:text-base text-nare-slate font-light leading-relaxed mb-5">
+                Capacitación práctica entre pares y días de campo donde compartimos resultados reales, validamos costos y acompañamos a nuevos caficultores en su transición gradual sin arriesgar la economía familiar.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs text-nare-slate">Dirigido a: Caficultores de Naranjo</span>
+              <button type="button" onclick="openServiceModal(2)" class="inline-flex items-center gap-1.5 text-sm font-medium text-nare-blue hover:underline">
+                <span>Ver detalle práctico</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-3xl p-7 sm:p-8 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-nare-yellow/70 transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-12 h-12 rounded-2xl bg-nare-yellow/20 text-nare-brown flex items-center justify-center">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  </svg>
+                </div>
+                <span class="text-xs font-medium px-3 py-1 rounded-full bg-nare-yellow/25 text-nare-brown">Pilar 04</span>
+              </div>
+              <h3 class="font-slab font-bold text-xl text-nare-dark mb-2.5">Alianzas Institucionales y Trazabilidad Regenerativa</h3>
+              <p class="text-sm sm:text-base text-nare-slate font-light leading-relaxed mb-5">
+                Articulación con organismos de cooperación, universidades, centros de investigación y compradores de café especial interesados en apoyar e impulsar modelos regenerativos verificables en Naranjo.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs text-nare-slate">Dirigido a: Instituciones y aliados</span>
+              <button type="button" onclick="openServiceModal(3)" class="inline-flex items-center gap-1.5 text-sm font-medium text-nare-brown hover:underline">
+                <span>Ver detalle práctico</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECCIÓN 4: GALERÍA Y ARCHIVO VISUAL                                   -->
+    <!-- ===================================================================== -->
+    <section id="galeria" class="py-20 lg:py-28 bg-nare-offwhite border-y border-slate-200/70">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div class="max-w-2xl">
+            <span class="inline-block text-xs font-bold uppercase tracking-widest text-nare-green mb-2">Archivo Visual · +600 Registros</span>
+            <h2 class="font-slab font-bold text-3xl sm:text-4xl text-nare-dark">
+              Galería de fincas y procesos en Naranjo
+            </h2>
+            <p class="text-base text-nare-slate font-light mt-3 leading-relaxed">
+              Contamos con un banco de más de 600 fotografías profesionales que documentan nuestras fincas, bioinsumos y sesiones de Escuela de Campo. Selecciona una categoría para explorar todas sus fotografías o agrega nuevas imágenes para guardarlas permanentemente.
+            </p>
+          </div>
+
+          <div class="shrink-0">
+            <label for="photo-upload-input" class="cursor-pointer inline-flex items-center gap-2.5 bg-white hover:bg-nare-blue hover:text-white text-nare-blue border border-nare-blue/40 font-medium text-sm px-5 py-3 rounded-xl shadow-sm transition-all duration-200">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+              </svg>
+              <span>Agregar imágenes a la galería</span>
+            </label>
+            <input id="photo-upload-input" type="file" accept="image/*" multiple class="hidden" />
+          </div>
+        </div>
+
+        <!-- Filtros por Categoría -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mt-8">
+          <div class="flex flex-wrap items-center gap-2.5" role="group" aria-label="Filtrar galería por categoría">
+            <button type="button" data-filter="todos" class="gallery-filter-btn active px-4 py-2 rounded-full text-sm font-medium bg-nare-blue text-white shadow-sm transition">
+              Todos (4 Álbumes)
+            </button>
+            <button type="button" data-filter="suelo" class="gallery-filter-btn px-4 py-2 rounded-full text-sm font-medium bg-white text-nare-dark border border-slate-200 hover:border-nare-brown transition">
+              Suelo Vivo y Bioinsumos
+            </button>
+            <button type="button" data-filter="sombra" class="gallery-filter-btn px-4 py-2 rounded-full text-sm font-medium bg-white text-nare-dark border border-slate-200 hover:border-nare-green transition">
+              Café Bajo Sombra
+            </button>
+            <button type="button" data-filter="escuela" class="gallery-filter-btn px-4 py-2 rounded-full text-sm font-medium bg-white text-nare-dark border border-slate-200 hover:border-nare-blue transition">
+              Escuela de Campo
+            </button>
+            <button type="button" data-filter="fincas" class="gallery-filter-btn px-4 py-2 rounded-full text-sm font-medium bg-white text-nare-dark border border-slate-200 hover:border-nare-yellow transition">
+              Fincas de Naranjo
+            </button>
+          </div>
+
+          <!-- Botón para volver a los 4 álbumes cuando estás viendo una categoría abierta -->
+          <button type="button" id="back-to-albums-btn" onclick="setGalleryFilter('todos')" class="hidden inline-flex items-center gap-1.5 text-sm font-medium text-nare-blue hover:underline">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            <span>Volver a las 4 categorías</span>
+          </button>
+        </div>
+
+        <div id="upload-feedback" class="hidden mt-5 p-4 rounded-2xl bg-nare-green/10 border border-nare-green/30 text-sm text-nare-dark flex items-center justify-between gap-4">
+          <span id="upload-feedback-text"></span>
+          <button type="button" onclick="resetUploadedPhotos()" class="text-xs font-bold text-nare-brown hover:underline shrink-0">Borrar imágenes guardadas</button>
+        </div>
+
+        <!-- Contenedor de Tarjetas de la Galería -->
+        <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8"></div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECCIÓN 5: CONTACTO Y ALIANZAS                                        -->
+    <!-- ===================================================================== -->
+    <section id="contacto" class="py-20 lg:py-28 bg-white bg-motif-beans relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          <div class="lg:col-span-5 space-y-6">
+            <div>
+              <span class="inline-block text-xs font-bold uppercase tracking-widest text-nare-blue mb-2">Contacto y Alianzas</span>
+              <h2 class="font-slab font-bold text-3xl sm:text-4xl text-nare-dark leading-tight">
+                Conectemos desde el territorio
+              </h2>
+              <p class="text-base text-nare-slate font-light mt-3 leading-relaxed">
+                Ya seas productor de Naranjo o alrededores, representante de una institución o aliado interesado en el café regenerativo, nos encantará conversar contigo.
+              </p>
+            </div>
+
+            <div class="space-y-4 pt-2">
+              <div class="flex items-start gap-4 p-4 rounded-2xl bg-nare-offwhite border border-slate-200/80">
+                <div class="w-10 h-10 rounded-xl bg-nare-blue/10 text-nare-blue flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-slab font-bold text-sm text-nare-dark">Ubicación</h3>
+                  <p class="text-sm text-nare-slate mt-0.5">Naranjo, Alajuela, Costa Rica</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-4 rounded-2xl bg-nare-offwhite border border-slate-200/80">
+                <div class="w-10 h-10 rounded-xl bg-nare-green/10 text-nare-green flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-slab font-bold text-sm text-nare-dark">Correo Electrónico Oficial</h3>
+                  <a href="mailto:narecafe@gmail.com" class="text-sm text-nare-blue font-medium hover:underline mt-0.5 inline-block">
+                    narecafe@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-4 rounded-2xl bg-nare-offwhite border border-slate-200/80">
+                <div class="w-10 h-10 rounded-xl bg-nare-brown/10 text-nare-brown flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-slab font-bold text-sm text-nare-dark">Canales Digitales</h3>
+                  <p class="text-sm text-nare-slate mt-0.5">
+                    Sitio web: <span class="text-nare-dark font-medium">narecafe.org</span>
+                  </p>
+                  <p class="text-sm text-nare-slate mt-0.5">
+                    Instagram: <a href="https://instagram.com/narecafe.njo" target="_blank" rel="noopener noreferrer" class="text-nare-green font-medium hover:underline">@narecafe.njo</a> · Facebook &amp; LinkedIn: <span class="text-nare-dark font-medium">@narecafe</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-lg">
+            <h3 class="font-slab font-bold text-xl sm:text-2xl text-nare-dark mb-1">Envíanos un mensaje</h3>
+            <p class="text-sm text-nare-slate mb-6">Selecciona tu perfil para adaptar nuestra respuesta a tus necesidades.</p>
+
+            <div class="mb-6">
+              <label class="block text-xs font-bold uppercase tracking-wider text-nare-dark mb-2.5">¿Cómo te identificas?</label>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5" id="profile-selector">
+                <button type="button" data-profile="Productor/a de café" class="profile-btn active p-3 rounded-xl border-2 border-nare-green bg-nare-green/10 text-left transition">
+                  <span class="block font-slab font-bold text-xs sm:text-sm text-nare-dark">Productor/a de café</span>
+                  <span class="block text-[11px] text-nare-slate mt-0.5">Naranjo y alrededores</span>
+                </button>
+                <button type="button" data-profile="Institución / Aliado" class="profile-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-nare-blue/50 text-left transition">
+                  <span class="block font-slab font-bold text-xs sm:text-sm text-nare-dark">Institución / Aliado</span>
+                  <span class="block text-[11px] text-nare-slate mt-0.5">Cooperación y sector</span>
+                </button>
+                <button type="button" data-profile="Interesado/a en café regenerativo" class="profile-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-nare-brown/50 text-left transition">
+                  <span class="block font-slab font-bold text-xs sm:text-sm text-nare-dark">Café regenerativo</span>
+                  <span class="block text-[11px] text-nare-slate mt-0.5">Compradores y público</span>
+                </button>
+              </div>
+            </div>
+
+            <form id="contact-form" class="space-y-4" novalidate>
+              <input type="hidden" id="selected-profile" name="profile" value="Productor/a de café" />
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="contact-name" class="block text-sm font-medium text-nare-dark mb-1">Nombre completo *</label>
+                  <input type="text" id="contact-name" required placeholder="Ej. María Fernanda Rojas" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-nare-blue focus:ring-2 focus:ring-nare-blue/20 transition" />
+                </div>
+                <div>
+                  <label for="contact-org" class="block text-sm font-medium text-nare-dark mb-1" id="org-label">Nombre de tu finca o comunidad</label>
+                  <input type="text" id="contact-org" placeholder="Ej. Finca El Mirador, Cirrí de Naranjo" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-nare-blue focus:ring-2 focus:ring-nare-blue/20 transition" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="contact-email" class="block text-sm font-medium text-nare-dark mb-1">Correo electrónico *</label>
+                  <input type="email" id="contact-email" required placeholder="tu.correo@ejemplo.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-nare-blue focus:ring-2 focus:ring-nare-blue/20 transition" />
+                </div>
+                <div>
+                  <label for="contact-phone" class="block text-sm font-medium text-nare-dark mb-1">Teléfono / WhatsApp</label>
+                  <input type="tel" id="contact-phone" placeholder="Ej. +506 8888-8888" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-nare-blue focus:ring-2 focus:ring-nare-blue/20 transition" />
+                </div>
+              </div>
+
+              <div>
+                <label for="contact-message" class="block text-sm font-medium text-nare-dark mb-1">Mensaje o consulta *</label>
+                <textarea id="contact-message" rows="4" required placeholder="Me gustaría conocer más sobre cómo participar en los intercambios finca por finca y elaboración de bioinsumos..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-nare-blue focus:ring-2 focus:ring-nare-blue/20 transition"></textarea>
+              </div>
+
+              <div id="form-status-box" class="hidden p-4 rounded-xl text-sm"></div>
+
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+                <button type="submit" class="inline-flex items-center justify-center gap-2 bg-nare-blue hover:bg-[#0e6b8e] text-white font-medium px-6 py-3.5 rounded-xl shadow-sm hover:shadow transition cursor-pointer">
+                  <span>Enviar consulta a NARECAFÉ</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  </svg>
+                </button>
+                <button type="button" id="open-mailto-btn" class="inline-flex items-center justify-center gap-2 bg-nare-offwhite hover:bg-slate-200/70 text-nare-dark border border-slate-300 font-medium px-5 py-3.5 rounded-xl text-sm transition cursor-pointer">
+                  <span>Abrir en mi app de correo</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- FOOTER OFICIAL                                                        -->
+  <!-- ===================================================================== -->
+  <footer class="bg-nare-dark text-white pt-16 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        
+        <div class="md:col-span-5 space-y-4">
+          <a href="#inicio" class="inline-flex items-center gap-3.5 group">
+            <svg class="w-14 h-12 shrink-0" style="--logo-top:#ffffff; --logo-bottom:#ffffff; --logo-cutout:#1b1d21;">
+              <use href="#narecafe-isotipo" />
+            </svg>
+            <div class="flex flex-col leading-none">
+              <div class="font-slab font-bold text-2xl sm:text-3xl tracking-tight text-white flex items-baseline">
+                <span>Narecaf</span><span class="relative inline-block">e<svg class="w-3.5 h-3.5 text-white absolute -top-2 right-0" viewBox="0 0 16 16" fill="currentColor"><path d="M2 14C2 7 7 2 14 2c0 7-5 12-12 12z"/></svg></span>
+              </div>
+              <span class="text-xs text-white/80 mt-1">
+                Asociación Naranjeña Regenerativa de Café
+              </span>
+            </div>
+          </a>
+          <p class="text-sm text-white/70 font-light leading-relaxed max-w-md pt-2">
+            Productores y productoras de Naranjo, Alajuela, impulsando una transición gradual hacia una caficultura sostenible y regenerativa que protege el suelo, la biodiversidad y la economía familiar.
+          </p>
+        </div>
+
+        <div class="md:col-span-3 space-y-3">
+          <h4 class="font-slab font-bold text-sm uppercase tracking-wider text-nare-yellow">Navegación</h4>
+          <ul class="space-y-2.5 text-sm text-white/75">
+            <li><a href="#inicio" class="hover:text-white transition">Inicio</a></li>
+            <li><a href="#sobre-nosotros" class="hover:text-white transition">Sobre nosotros</a></li>
+            <li><a href="#servicios" class="hover:text-white transition">Modelo y Servicios</a></li>
+            <li><a href="#galeria" class="hover:text-white transition">Galería de Fincas</a></li>
+            <li><a href="#contacto" class="hover:text-white transition">Contacto y Alianzas</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-4 space-y-4">
+          <h4 class="font-slab font-bold text-sm uppercase tracking-wider text-nare-yellow">Conecta con NARECAFÉ</h4>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://instagram.com/narecafe.njo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-nare-green text-xs font-medium text-white transition">
+              <span>Instagram @narecafe.njo</span>
+            </a>
+            <a href="mailto:narecafe@gmail.com" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-nare-blue text-xs font-medium text-white transition">
+              <span>narecafe@gmail.com</span>
+            </a>
+          </div>
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 text-xs text-white/75 leading-relaxed">
+            <strong class="text-white block mb-1">Origen y Cooperación:</strong>
+            Iniciativa nacida en la Escuela de Campo de Naranjo con el respaldo de cooperación europea para el fortalecimiento de la caficultura regenerativa.
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60">
+        <p>© <span id="current-year"></span> NARECAFÉ · Asociación Naranjeña Regenerativa de Café. Todos los derechos reservados.</p>
+        <p>Naranjo, Alajuela, Costa Rica · <span class="text-white/80">narecafe.org</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL DE SERVICIOS                                                    -->
+  <!-- ===================================================================== -->
+  <div id="service-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-nare-dark/70 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative animate-fadeInScale">
+      <button type="button" onclick="closeServiceModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-nare-dark flex items-center justify-center transition" aria-label="Cerrar ventana">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <span id="modal-badge" class="inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-nare-blue/10 text-nare-blue mb-3"></span>
+      <h3 id="modal-title" class="font-slab font-bold text-2xl text-nare-dark mb-3"></h3>
+      <p id="modal-desc" class="text-sm sm:text-base text-nare-slate font-light leading-relaxed mb-5"></p>
+      <div class="bg-nare-offwhite rounded-2xl p-4 border border-slate-200/80 mb-6">
+        <h4 class="font-slab font-bold text-sm text-nare-dark mb-2.5">Prácticas clave que implementamos:</h4>
+        <ul id="modal-list" class="space-y-2 text-sm text-nare-dark"></ul>
+      </div>
+      <div class="flex justify-end gap-3">
+        <button type="button" onclick="closeServiceModal()" class="px-5 py-2.5 rounded-xl border border-slate-300 text-sm font-medium text-nare-dark hover:bg-slate-50 transition">Cerrar</button>
+        <a href="#contacto" onclick="closeServiceModal()" class="px-5 py-2.5 rounded-xl bg-nare-green text-white text-sm font-medium hover:bg-[#1e8273] transition">Solicitar información</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- VISOR LIGHTBOX PARA GALERÍA                                           -->
+  <!-- ===================================================================== -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-nare-dark/85 backdrop-blur-md" role="dialog" aria-modal="true" aria-labelledby="lb-title">
+    <div class="bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl relative">
+      <button type="button" onclick="closeLightbox()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-nare-dark/80 hover:bg-nare-dark text-white flex items-center justify-center transition" aria-label="Cerrar visor">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <div id="lb-visual" class="w-full bg-nare-offwhite flex items-center justify-center min-h-[260px] sm:min-h-[340px]"></div>
+      <div class="p-6 sm:p-7">
+        <div class="flex flex-wrap items-center gap-2 mb-2">
+          <span id="lb-category" class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-nare-green/10 text-nare-green"></span>
+          <span id="lb-location" class="text-xs text-nare-slate">Naranjo, Alajuela</span>
+        </div>
+        <h3 id="lb-title" class="font-slab font-bold text-xl sm:text-2xl text-nare-dark"></h3>
+        <p id="lb-desc" class="text-sm sm:text-base text-nare-slate font-light mt-2 leading-relaxed"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT INTERACTIVO                                                -->
+  <!-- ===================================================================== -->
+  <script>
+    // 1. Año actual en el footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // 2. Menú móvil hamburguesa
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-menu-open');
+    const iconClose = document.getElementById('icon-menu-close');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden', !isHidden);
+      iconClose.classList.toggle('hidden', isHidden);
+      mobileMenuBtn.setAttribute('aria-expanded', String(isHidden));
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // 3. Scroll Spy en barra de navegación
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.scrollY + 140;
+      sections.forEach(sec => {
+        if (scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
+          const id = sec.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    });
+
+    // 4. Línea de tiempo interactiva
+    const timelineData = [
+      {
+        badge: 'Etapa 01 · Punto de partida',
+        color: '#1281aa',
+        title: 'Escuela de Campo financiada por cooperación europea',
+        desc: 'Pequeños y medianos caficultores de Naranjo nos reunimos en sesiones prácticas de campo para observar nuestros suelos, diagnosticar problemáticas reales y aprender haciendo bajo un enfoque participativo.',
+        highlights: ['Diagnóstico participativo de suelos', 'Aprendizaje práctico entre productores y productoras', 'Acompañamiento técnico con cooperación europea']
+      },
+      {
+        badge: 'Etapa 02 · Autonomía en finca',
+        color: '#249a89',
+        title: 'Microorganismos de montaña y bioinsumos propios',
+        desc: 'Recolectamos microorganismos benéficos de los bosques locales de Naranjo y desarrollamos biofertilizantes y bioles en nuestras propias fincas, validando dosis y resultados sin comprometer el rendimiento.',
+        highlights: ['Captura y reproducción de Microorganismos de Montaña (MM)', 'Biofermentos minerales y enmiendas orgánicas', 'Reducción gradual de costos e insumos químicos']
+      },
+      {
+        badge: 'Etapa 03 · Identidad colectiva',
+        color: '#845339',
+        title: 'Nacimiento de NARECAFÉ como asociación',
+        desc: 'Al finalizar la Escuela de Campo decidimos formalizar nuestra unión como Asociación Naranjeña Regenerativa de Café, consolidando nuestra identidad de marca, gobernanza y propósito común.',
+        highlights: ['Constitución formal de la asociación en Naranjo', 'Desarrollo de Guía de Marca Visual y estrategia', 'Comunidad activa de intercambio finca por finca']
+      },
+      {
+        badge: 'Etapa 04 · Proyección futura',
+        color: '#fbb040',
+        title: 'Transformación del paisaje productivo de Naranjo',
+        desc: 'Hoy trabajamos para sumar más fincas vecinas, documentar nuestros avances regenerativos y conectar un café de alto valor ambiental y humano con aliados e instituciones.',
+        highlights: ['Expansión de sistemas agroforestales bajo sombra', 'Trazabilidad regenerativa y alianzas estratégicas', 'Resiliencia climática y economía familiar fortalecida']
+      }
+    ];
+
+    function selectTimeline(index) {
+      const item = timelineData[index];
+      const container = document.getElementById('tl-content');
+
+      document.querySelectorAll('.tl-btn').forEach((btn, idx) => {
+        if (idx === index) {
+          btn.classList.remove('border-slate-200', 'bg-white');
+          btn.classList.add('border-nare-blue', 'bg-nare-blue/5', 'shadow-sm');
+        } else {
+          btn.classList.add('border-slate-200', 'bg-white');
+          btn.classList.remove('border-nare-blue', 'bg-nare-blue/5', 'shadow-sm');
+        }
+      });
+
+      container.innerHTML = `
+        <div class="tab-panel">
+          <span class="inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-2.5" style="background-color:${item.color}18; color:${item.color === '#fbb040' ? '#845339' : item.color};">
+            ${item.badge}
+          </span>
+          <h4 class="font-slab font-bold text-lg sm:text-xl text-nare-dark">${item.title}</h4>
+          <p class="text-sm sm:text-base text-nare-slate font-light mt-2 leading-relaxed">${item.desc}</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4 pt-4 border-t border-slate-200/70">
+            ${item.highlights.map(h => `
+              <div class="flex items-start gap-2 text-xs sm:text-sm text-nare-dark">
+                <svg class="w-4 h-4 text-nare-green shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>${h}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+    selectTimeline(0);
+
+    // 5. Modal de Servicios
+    const servicesDetail = [
+      {
+        badge: 'Pilar 01 · Suelo Vivo',
+        title: 'Suelo Vivo y Microbiología en Finca',
+        desc: 'El suelo es el corazón de la finca cafetalera. En NARECAFÉ promovemos la regeneración biológica del suelo mediante insumos elaborados con recursos locales.',
+        items: [
+          'Recolección y activación de Microorganismos de Montaña (MM sólidos y líquidos).',
+          'Elaboración de biofertilizantes enriquecidos con minerales para nutrición foliar y edáfica.',
+          'Coberturas vegetales vivas y manejo de rastrojos para evitar la erosión en laderas de Naranjo.',
+          'Monitoreo visual y práctico de estructura, humedad y actividad biológica del suelo.'
+        ]
+      },
+      {
+        badge: 'Pilar 02 · Biodiversidad',
+        title: 'Café Bajo Sombra y Corredores Biológicos',
+        desc: 'Integramos árboles de sombra diversificados que protegen el cafetal frente a extremos climáticos y convierten cada finca en un refugio de vida.',
+        items: [
+          'Selección y poda estratégica de árboles de sombra nativa y especies de servicio.',
+          'Protección de polinizadores clave como el colibrí y abejas nativas.',
+          'Conservación de microcuencas y zonas de recarga hídrica en fincas cafetaleras.',
+          'Secuestro de carbono y regulación térmica del microclima del cafetal.'
+        ]
+      },
+      {
+        badge: 'Pilar 03 · Comunidad de Práctica',
+        title: 'Escuela de Campo e Intercambio Finca por Finca',
+        desc: 'Nuestro aprendizaje es horizontal: cada finca es un laboratorio vivo donde compartimos aciertos, aprendizajes y métricas reales.',
+        items: [
+          'Visitas periódicas entre fincas asociadas para evaluar prácticas en terreno.',
+          'Talleres prácticos abiertos a caficultores de Naranjo y cantones vecinos.',
+          'Planificación de transición gradual cuidando la rentabilidad y flujo de caja familiar.',
+          'Registro fotográfico y técnico continuo de la evolución de los lotes.'
+        ]
+      },
+      {
+        badge: 'Pilar 04 · Alianzas',
+        title: 'Alianzas Institucionales y Trazabilidad Regenerativa',
+        desc: 'Construimos puentes entre las familias productoras y organizaciones que buscan impulsar una caficultura con impacto positivo medible.',
+        items: [
+          'Articulación con cooperación internacional, academia e instituciones agropecuarias.',
+          'Documentación de prácticas regenerativas para mercados diferenciados.',
+          'Visitas técnicas guiadas para aliados, investigadores y tostadores interesados.',
+          'Construcción colectiva de propuestas de desarrollo rural sostenible.'
+        ]
+      }
+    ];
+
+    function openServiceModal(idx) {
+      const s = servicesDetail[idx];
+      document.getElementById('modal-badge').textContent = s.badge;
+      document.getElementById('modal-title').textContent = s.title;
+      document.getElementById('modal-desc').textContent = s.desc;
+      document.getElementById('modal-list').innerHTML = s.items.map(item => `
+        <li class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-nare-green/15 text-nare-green flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">✓</span>
+          <span>${item}</span>
+        </li>
+      `).join('');
+
+      const modal = document.getElementById('service-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeServiceModal() {
+      const modal = document.getElementById('service-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // 6. Galería por Categorías + Vista Resumida (4 Álbumes en "Todos") + Persistencia localStorage
+    const categoriesConfig = [
+      {
+        id: 'suelo',
+        label: 'Suelo Vivo y Bioinsumos',
+        albumTitle: 'Suelo Vivo y Bioinsumos',
+        albumDesc: 'Microorganismos de montaña, biofermentos y regeneración orgánica en finca.'
+      },
+      {
+        id: 'sombra',
+        label: 'Café Bajo Sombra',
+        albumTitle: 'Café Bajo Sombra',
+        albumDesc: 'Sistemas agroforestales, biodiversidad y corredores biológicos en Naranjo.'
+      },
+      {
+        id: 'escuela',
+        label: 'Escuela de Campo',
+        albumTitle: 'Escuela de Campo',
+        albumDesc: 'Sesiones prácticas colectivas e intercambio de saberes finca por finca.'
+      },
+      {
+        id: 'fincas',
+        label: 'Fincas de Naranjo',
+        albumTitle: 'Fincas de Naranjo',
+        albumDesc: 'Paisajes cafetaleros familiares y lotes productivos en transición regenerativa.'
+      }
+    ];
+
+    const editorialGalleryItems = [
+      // --- SUELO VIVO Y BIOINSUMOS ---
+      {
+        id: 'suelo-1',
+        category: 'suelo',
+        categoryLabel: 'Suelo Vivo y Bioinsumos',
+        title: 'Prácticas de Suelo y Bioinsumos en Finca',
+        desc: 'Registro fotográfico de las labores regenerativas aplicadas en las fincas asociadas de Naranjo.',
+        imageUrl: 'https://i.postimg.cc/FzBsqkMp/web-2robles-naranjo-priscillamora012.jpg'
+      },
+      {
+        id: 'suelo-2',
+        category: 'suelo',
+        categoryLabel: 'Suelo Vivo y Bioinsumos',
+        title: 'Preparación de Biofermentos y Microorganismos',
+        desc: 'Elaboración artesanal de insumos biológicos hechos directamente en la finca.',
+        imageUrl: 'https://i.postimg.cc/T27whBKM/web-2robles-naranjo-priscillamora082.jpg'
+      },
+      {
+        id: 'suelo-3',
+        category: 'suelo',
+        categoryLabel: 'Suelo Vivo y Bioinsumos',
+        title: 'Regeneración Biológica del Suelo',
+        desc: 'Fortalecimiento de la microbiota y estructura orgánica del suelo cafetalero.',
+        imageUrl: 'https://i.postimg.cc/Y2n9jTvB/web-2robles-naranjo-priscillamora124.jpg'
+      },
+      {
+        id: 'suelo-4',
+        category: 'suelo',
+        categoryLabel: 'Suelo Vivo y Bioinsumos',
+        title: 'Manejo Sostenible de Nutrición Edáfica',
+        desc: 'Aplicación de bioinsumos locales para reducir la dependencia de agroquímicos.',
+        imageUrl: 'https://i.postimg.cc/fW2Lk1Vh/web-2robles-naranjo-priscillamora125.jpg'
+      },
+      {
+        id: 'suelo-5',
+        category: 'suelo',
+        categoryLabel: 'Suelo Vivo y Bioinsumos',
+        title: 'Cobertura Viva y Salud del Cafetal',
+        desc: 'Protección contra la erosión y conservación de humedad en los lotes productivos.',
+        imageUrl: 'https://i.postimg.cc/J76ntSsL/web-2robles-naranjo-priscillamora142.jpg'
+      },
+
+      // --- CAFÉ BAJO SOMBRA ---
+      {
+        id: 'sombra-1',
+        category: 'sombra',
+        categoryLabel: 'Café Bajo Sombra',
+        title: 'Sistema Agroforestal y Cobertura',
+        desc: 'Manejo de sombra diversificada y biodiversidad en los cafetales de altura.',
+        imageUrl: 'https://i.postimg.cc/VsG652Jz/web-2robles-naranjo-priscillamora164.jpg'
+      },
+      {
+        id: 'sombra-2',
+        category: 'sombra',
+        categoryLabel: 'Café Bajo Sombra',
+        title: 'Regulación Microclimática bajo Dosel',
+        desc: 'Árboles nativos y de servicio protegiendo el cultivo frente a extremos climáticos.',
+        imageUrl: 'https://i.postimg.cc/nVRzMNXc/web-2robles-naranjo-priscillamora169.jpg'
+      },
+      {
+        id: 'sombra-3',
+        category: 'sombra',
+        categoryLabel: 'Café Bajo Sombra',
+        title: 'Biodiversidad y Corredores Biológicos',
+        desc: 'Refugio para aves, polinizadores y fauna benéfica en las fincas de Naranjo.',
+        imageUrl: 'https://i.postimg.cc/ZY7R0XW5/web-2robles-naranjo-priscillamora186.jpg'
+      },
+      {
+        id: 'sombra-4',
+        category: 'sombra',
+        categoryLabel: 'Café Bajo Sombra',
+        title: 'Equilibrio Ecológico en el Cafetal',
+        desc: 'Integración armoniosa entre producción de café de calidad y bosque.',
+        imageUrl: 'https://i.postimg.cc/ZY7R0XWR/web-2robles-naranjo-priscillamora198.jpg'
+      },
+      {
+        id: 'sombra-5',
+        category: 'sombra',
+        categoryLabel: 'Café Bajo Sombra',
+        title: 'Cosecha y Desarrollo bajo Sombra',
+        desc: 'Maduración lenta y uniforme del grano gracias al manejo agroforestal.',
+        imageUrl: 'https://i.postimg.cc/RCsFq2W6/web-2robles-naranjo-priscillamora211.jpg'
+      },
+
+      // --- ESCUELA DE CAMPO ---
+      {
+        id: 'escuela-1',
+        category: 'escuela',
+        categoryLabel: 'Escuela de Campo',
+        title: 'Sesiones de Trabajo Colectivo',
+        desc: 'Aprendizaje práctico y participación activa de los productores y productoras.',
+        imageUrl: 'https://i.postimg.cc/MZPTXgnf/web-2robles-naranjo-priscillamora217.jpg'
+      },
+      {
+        id: 'escuela-2',
+        category: 'escuela',
+        categoryLabel: 'Escuela de Campo',
+        title: 'Intercambio de Saberes Finca por Finca',
+        desc: 'Evaluación conjunta de resultados en terreno entre miembros de NARECAFÉ.',
+        imageUrl: 'https://i.postimg.cc/9X8MzsDq/web-2robles-naranjo-priscillamora234.jpg'
+      },
+      {
+        id: 'escuela-3',
+        category: 'escuela',
+        categoryLabel: 'Escuela de Campo',
+        title: 'Capacitación Técnica Participativa',
+        desc: 'Aprender haciendo: fortalecimiento de capacidades locales en caficultura regenerativa.',
+        imageUrl: 'https://i.postimg.cc/3rSRWzkp/web-2robles-naranjo-priscillamora403.jpg'
+      },
+      {
+        id: 'escuela-4',
+        category: 'escuela',
+        categoryLabel: 'Escuela de Campo',
+        title: 'Diagnóstico Comunitario en Campo',
+        desc: 'Observación directa de indicadores de salud del suelo y vigor de las plantas.',
+        imageUrl: 'https://i.postimg.cc/jqg5CBDy/web-2robles-naranjo-priscillamora414.jpg'
+      },
+      {
+        id: 'escuela-5',
+        category: 'escuela',
+        categoryLabel: 'Escuela de Campo',
+        title: 'Comunidad de Práctica Territorial',
+        desc: 'Productores unidos compartiendo experiencias para una transición gradual exitosa.',
+        imageUrl: 'https://i.postimg.cc/9X8MzsDG/web-2robles-naranjo-priscillamora465.jpg'
+      },
+
+      // --- FINCAS DE NARANJO ---
+      {
+        id: 'fincas-1',
+        category: 'fincas',
+        categoryLabel: 'Fincas de Naranjo',
+        title: 'Paisaje Cafetalero en Naranjo',
+        desc: 'Vista panorámica de las parcelas productivas en transición regenerativa.',
+        imageUrl: 'https://i.postimg.cc/2jc63g1d/web-2robles-naranjo-priscillamora467.jpg'
+      },
+      {
+        id: 'fincas-2',
+        category: 'fincas',
+        categoryLabel: 'Fincas de Naranjo',
+        title: 'Fincas Familiares de Altura',
+        desc: 'Tradición cafetalera naranjeña comprometida con la sostenibilidad ambiental.',
+        imageUrl: 'https://i.postimg.cc/Gh4pDzD4/web-2robles-naranjo-priscillamora475.jpg'
+      },
+      {
+        id: 'fincas-3',
+        category: 'fincas',
+        categoryLabel: 'Fincas de Naranjo',
+        title: 'Entorno Natural y Producción',
+        desc: 'Conservación de recursos hídricos y paisajes vivos en Alajuela, Costa Rica.',
+        imageUrl: 'https://i.postimg.cc/Pf3xN0Cz/web-2robles-naranjo-priscillamora476.jpg'
+      },
+      {
+        id: 'fincas-4',
+        category: 'fincas',
+        categoryLabel: 'Fincas de Naranjo',
+        title: 'Territorio Regenerativo NARECAFÉ',
+        desc: 'Cada finca asociada aporta a la transformación sostenible del cantón de Naranjo.',
+        imageUrl: 'https://i.postimg.cc/TYKPbQbL/web-2robles-naranjo-priscillamora488.jpg'
+      },
+      {
+        id: 'fincas-5',
+        category: 'fincas',
+        categoryLabel: 'Fincas de Naranjo',
+        title: 'Cultivo con Propósito',
+        desc: 'Cuidando la tierra y fortaleciendo la economía familiar generacional.',
+        imageUrl: 'https://i.postimg.cc/pXmdjkj5/web-2robles-naranjo-priscillamora537.jpg'
+      },
+      {
+        id: 'fincas-6',
+        category: 'fincas',
+        categoryLabel: 'Fincas de Naranjo',
+        title: 'Identidad Cafetalera de Naranjo',
+        desc: 'Registro del archivo visual oficial de la Asociación Naranjeña Regenerativa de Café.',
+        imageUrl: 'https://i.postimg.cc/9FDf919q/web-2robles-naranjo-priscillamora538.jpg'
+      }
+    ];
+
+    const STORAGE_KEY = 'narecafe_saved_gallery_v1';
+    let uploadedGalleryItems = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    let currentFilter = 'todos';
+
+    const categoryNamesMap = {
+      suelo: 'Suelo Vivo y Bioinsumos',
+      sombra: 'Café Bajo Sombra',
+      escuela: 'Escuela de Campo',
+      fincas: 'Fincas de Naranjo'
+    };
+
+    function updateFeedbackBanner() {
+      const feedback = document.getElementById('upload-feedback');
+      if (uploadedGalleryItems.length > 0) {
+        document.getElementById('upload-feedback-text').textContent =
+          `Tienes ${uploadedGalleryItems.length} fotografía(s) agregada(s) y guardada(s) en este navegador.`;
+        feedback.classList.remove('hidden');
+      } else {
+        feedback.classList.add('hidden');
+      }
+    }
+
+    function setGalleryFilter(filterName) {
+      currentFilter = filterName;
+
+      // Actualizar botones activos
+      document.querySelectorAll('.gallery-filter-btn').forEach(b => {
+        if (b.dataset.filter === filterName) {
+          b.classList.add('bg-nare-blue', 'text-white', 'shadow-sm');
+          b.classList.remove('bg-white', 'text-nare-dark', 'border', 'border-slate-200');
+        } else {
+          b.classList.remove('bg-nare-blue', 'text-white', 'shadow-sm');
+          b.classList.add('bg-white', 'text-nare-dark', 'border', 'border-slate-200');
+        }
+      });
+
+      // Mostrar u ocultar botón "Volver a las 4 categorías"
+      const backBtn = document.getElementById('back-to-albums-btn');
+      if (filterName === 'todos') {
+        backBtn.classList.add('hidden');
+      } else {
+        backBtn.classList.remove('hidden');
+      }
+
+      renderGallery();
+    }
+
+    function renderGallery() {
+      const grid = document.getElementById('gallery-grid');
+      // Las más recientes agregadas aparecen primero
+      const allItems = [...uploadedGalleryItems, ...editorialGalleryItems];
+
+      if (currentFilter === 'todos') {
+        // VISTA PRINCIPAL ("Todos"): Solo 4 tarjetas (1 portada por categoría = la última agregada o primera de cada categoría)
+        grid.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8';
+
+        grid.innerHTML = categoriesConfig.map((cat) => {
+          const catItems = allItems.filter(item => item.category === cat.id);
+          // Toma la última agregada (al inicio de catItems) o la primera disponible
+          const coverItem = catItems[0];
+          const count = catItems.length;
+
+          return `
+            <article onclick="setGalleryFilter('${cat.id}')" class="group cursor-pointer bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-lg hover:border-nare-blue/50 transition-all flex flex-col">
+              <div class="relative h-56 w-full overflow-hidden bg-nare-offwhite">
+                <img src="${coverItem.imageUrl}" alt="${cat.albumTitle}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div class="absolute inset-0 bg-gradient-to-t from-nare-dark/70 via-nare-dark/15 to-transparent"></div>
+                <span class="absolute top-3.5 left-3.5 text-[11px] font-bold px-3 py-1 rounded-full bg-white/95 text-nare-dark shadow-sm">
+                  ${count} ${count === 1 ? 'foto' : 'fotos'}
+                </span>
+                <div class="absolute bottom-3.5 left-4 right-4 text-white">
+                  <span class="text-[11px] uppercase tracking-wider text-nare-yellow font-bold block">Categoría</span>
+                  <h3 class="font-slab font-bold text-lg leading-snug">${cat.albumTitle}</h3>
+                </div>
+              </div>
+              <div class="p-5 flex-1 flex flex-col justify-between">
+                <p class="text-sm text-nare-slate font-light leading-relaxed">${cat.albumDesc}</p>
+                <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <span class="text-nare-slate">Naranjo, Alajuela</span>
+                  <span class="font-bold text-nare-blue group-hover:translate-x-0.5 transition-transform">Ver todas (${count}) →</span>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join('');
+      } else {
+        // VISTA DE CATEGORÍA ABIERTA: Se despliegan TODAS las fotografías de esa categoría
+        grid.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8';
+        const filtered = allItems.filter(item => item.category === currentFilter);
+
+        grid.innerHTML = filtered.map((item) => `
+          <article onclick="openLightbox('${item.id}')" class="group cursor-pointer bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-md hover:border-nare-blue/40 transition-all flex flex-col">
+            <div class="relative h-56 w-full overflow-hidden bg-nare-offwhite">
+              <img src="${item.imageUrl}" alt="${item.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <span class="absolute top-3.5 left-3.5 text-[11px] font-bold px-3 py-1 rounded-full bg-white/95 text-nare-dark shadow-sm">
+                ${item.categoryLabel}
+              </span>
+              <span class="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-nare-dark/75 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-slab font-bold text-lg text-nare-dark group-hover:text-nare-blue transition">${item.title}</h3>
+                <p class="text-sm text-nare-slate font-light mt-2 leading-relaxed line-clamp-3">${item.desc}</p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-nare-slate">
+                <span>Naranjo, Alajuela</span>
+                <span class="font-medium text-nare-green">Ampliar foto →</span>
+              </div>
+            </div>
+          </article>
+        `).join('');
+      }
+    }
+
+    updateFeedbackBanner();
+    renderGallery();
+
+    document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setGalleryFilter(btn.dataset.filter);
+      });
+    });
+
+    function compressImageToBase64(file, maxWidth = 900, quality = 0.78) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            let width = img.width;
+            let height = img.height;
+
+            if (width > maxWidth) {
+              height = Math.round((height * maxWidth) / width);
+              width = maxWidth;
+            }
+
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+            resolve(canvas.toDataURL('image/jpeg', quality));
+          };
+          img.onerror = reject;
+          img.src = event.target.result;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    const photoInput = document.getElementById('photo-upload-input');
+    photoInput.addEventListener('change', async (e) => {
+      const files = Array.from(e.target.files || []);
+      if (!files.length) return;
+
+      const targetCategory = currentFilter === 'todos' ? 'fincas' : currentFilter;
+      const targetCategoryLabel = categoryNamesMap[targetCategory];
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        try {
+          const base64Url = await compressImageToBase64(file);
+          uploadedGalleryItems.unshift({
+            id: `uploaded-${Date.now()}-${i}`,
+            category: targetCategory,
+            categoryLabel: targetCategoryLabel,
+            title: file.name.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' '),
+            desc: 'Fotografía agregada al álbum de NARECAFÉ.',
+            imageUrl: base64Url
+          });
+        } catch (err) {
+          console.error('Error procesando imagen:', err);
+        }
+      }
+
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(uploadedGalleryItems));
+      } catch (storageError) {
+        alert('Se alcanzó el límite de almacenamiento del navegador. Elimina algunas fotos guardadas para agregar más.');
+      }
+
+      photoInput.value = '';
+      updateFeedbackBanner();
+      renderGallery();
+    });
+
+    function resetUploadedPhotos() {
+      uploadedGalleryItems = [];
+      localStorage.removeItem(STORAGE_KEY);
+      photoInput.value = '';
+      updateFeedbackBanner();
+      renderGallery();
+    }
+
+    function openLightbox(itemId) {
+      const allItems = [...uploadedGalleryItems, ...editorialGalleryItems];
+      const item = allItems.find(i => i.id === itemId);
+      if (!item) return;
+
+      const visualBox = document.getElementById('lb-visual');
+      visualBox.innerHTML = `<img src="${item.imageUrl}" alt="${item.title}" class="max-h-[440px] w-auto object-contain" />`;
+
+      document.getElementById('lb-category').textContent = item.categoryLabel;
+      document.getElementById('lb-title').textContent = item.title;
+      document.getElementById('lb-desc').textContent = item.desc;
+
+      const lb = document.getElementById('lightbox-modal');
+      lb.classList.remove('hidden');
+      lb.classList.add('flex');
+    }
+
+    function closeLightbox() {
+      const lb = document.getElementById('lightbox-modal');
+      lb.classList.add('hidden');
+      lb.classList.remove('flex');
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeServiceModal();
+        closeLightbox();
+      }
+    });
+    document.getElementById('service-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'service-modal') closeServiceModal();
+    });
+    document.getElementById('lightbox-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'lightbox-modal') closeLightbox();
+    });
+
+    // 7. Perfiles y Formulario de Contacto
+    const profilePlaceholders = {
+      'Productor/a de café': {
+        orgLabel: 'Nombre de tu finca o distrito en Naranjo',
+        orgPlaceholder: 'Ej. Finca La Esperanza, San Juan de Naranjo',
+        msgPlaceholder: 'Me gustaría participar en las visitas finca por finca y aprender sobre elaboración de bioinsumos...'
+      },
+      'Institución / Aliado': {
+        orgLabel: 'Institución, organización o empresa',
+        orgPlaceholder: 'Ej. Cooperación Técnica / Universidad / Centro de Investigación',
+        msgPlaceholder: 'Nos interesa explorar una alianza o proyecto conjunto con NARECAFÉ en Naranjo...'
+      },
+      'Interesado/a en café regenerativo': {
+        orgLabel: 'Empresa, cafetería o ciudad (opcional)',
+        orgPlaceholder: 'Ej. Tostaduría / Consumidor en Costa Rica',
+        msgPlaceholder: 'Quisiera conocer más sobre el café regenerativo que producen las fincas asociadas...'
+      }
+    };
+
+    document.querySelectorAll('.profile-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const profile = btn.dataset.profile;
+        document.getElementById('selected-profile').value = profile;
+
+        document.querySelectorAll('.profile-btn').forEach(b => {
+          b.classList.remove('active', 'border-nare-green', 'bg-nare-green/10');
+          b.classList.add('border-slate-200', 'bg-white');
+        });
+        btn.classList.add('active', 'border-nare-green', 'bg-nare-green/10');
+        btn.classList.remove('border-slate-200', 'bg-white');
+
+        const cfg = profilePlaceholders[profile];
+        if (cfg) {
+          document.getElementById('org-label').textContent = cfg.orgLabel;
+          document.getElementById('contact-org').placeholder = cfg.orgPlaceholder;
+          document.getElementById('contact-message').placeholder = cfg.msgPlaceholder;
+        }
+      });
+    });
+
+    const contactForm = document.getElementById('contact-form');
+    const statusBox = document.getElementById('form-status-box');
+
+    function showStatus(type, message) {
+      statusBox.classList.remove('hidden', 'bg-red-50', 'text-red-800', 'border-red-200', 'bg-nare-green/10', 'text-nare-dark', 'border-nare-green/30');
+      statusBox.classList.add('border');
+      if (type === 'error') {
+        statusBox.classList.add('bg-red-50', 'text-red-800', 'border-red-200');
+      } else {
+        statusBox.classList.add('bg-nare-green/10', 'text-nare-dark', 'border-nare-green/30');
+      }
+      statusBox.textContent = message;
+    }
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const message = document.getElementById('contact-message').value.trim();
+      const profile = document.getElementById('selected-profile').value;
+
+      if (!name || !email || !message) {
+        showStatus('error', 'Por favor completa tu nombre, correo electrónico y mensaje para que podamos responderte.');
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showStatus('error', 'Por favor ingresa un correo electrónico válido.');
+        return;
+      }
+
+      showStatus('success', `¡Gracias, ${name}! Hemos registrado tu consulta como "${profile}". Muy pronto nos pondremos en contacto contigo desde NARECAFÉ (narecafe@gmail.com).`);
+      contactForm.reset();
+    });
+
+    document.getElementById('open-mailto-btn').addEventListener('click', () => {
+      const name = document.getElementById('contact-name').value.trim() || 'Consulta desde web';
+      const profile = document.getElementById('selected-profile').value;
+      const org = document.getElementById('contact-org').value.trim();
+      const msg = document.getElementById('contact-message').value.trim();
+
+      const subject = encodeURIComponent(`[Web NARECAFÉ] ${profile} - ${name}`);
+      const body = encodeURIComponent(`Perfil: ${profile}\nNombre: ${name}\nFinca/Organización: ${org || 'No especificada'}\n\nMensaje:\n${msg}`);
+      window.location.href = `mailto:narecafe@gmail.com?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
